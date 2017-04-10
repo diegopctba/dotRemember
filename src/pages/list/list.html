@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Notifications</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h3>Notifications</h3>
+  <table>
+    <tr *ngFor="let noti of notifications">
+      <td>{{noti}}</td>
+
+    </tr>
+  </table>
+
+  <button ion-button secondary menuToggle>Toggle Menu</button>
+</ion-content>

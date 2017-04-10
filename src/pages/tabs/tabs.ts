@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
 //import { HomePage } from '../home/home';
 import { RememberPage } from '../remember/remember';
 
+
 @Component({
   templateUrl: 'tabs.html'
 })

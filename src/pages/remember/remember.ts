@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-//import { NavController } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 
@@ -16,7 +16,9 @@ export class RememberPage {
   countMin: number = 1;
   time: string;
 
-  constructor(public alertCtrl: AlertController, private localNotifications: LocalNotifications) {
+  constructor(public alertCtrl: AlertController,
+      public navCtrl: NavController,
+     private localNotifications: LocalNotifications) {
   }
 
   showNotification() {
