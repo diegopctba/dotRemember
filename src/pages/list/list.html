@@ -8,13 +8,15 @@
 </ion-header>
 
 <ion-content padding>
-  <h3>Notifications</h3>
-  <table>
-    <tr *ngFor="let noti of notifications">
-      <td>{{noti}}</td>
-
+  <table *ngIf="arrayNotifs != null && arrayNotifs.length > 0">
+    <tr *ngFor="let noti of arrayNotifs">
+      <!--<list-notifications></list-notifications>-->
+      {{noti.text}}
     </tr>
   </table>
+  <h1 *ngIf="arrayNotifs == null || arrayNotifs.length === 0">
+    Não há notificações
+  </h1>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <!--<button ion-button secondary menuToggle>Toggle Menu</button>-->
 </ion-content>

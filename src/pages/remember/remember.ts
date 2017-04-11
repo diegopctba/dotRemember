@@ -36,18 +36,18 @@ export class RememberPage {
         title: 'Lembrete',
         subTitle: 'Deseja acionar o lembrete?',
         buttons: [{
+          text: 'Cancelar',
+          role: "cancel",
+          handler: () => {
+            console.log('remember set has been canceled');
+          }
+        },{
           text: 'OK',
           role: "destructive",
           handler: () => {
             this.setNotification();
             this.showCancelButton = true;
             console.log('notification has been launch');
-          }
-        }, {
-          text: 'Cancelar',
-          role: "cancel",
-          handler: () => {
-            console.log('remember set has been canceled');
           }
         }]
       });
@@ -84,6 +84,12 @@ export class RememberPage {
       title: 'Lembrete',
       subTitle: 'Deseja cancelar o lembrete?',
       buttons: [{
+        text: 'Cancelar',
+        role: "cancel",
+        handler: () => {
+          console.log('cancel remember set has been canceled');
+        }
+      },{
         text: 'OK',
         role: "destructive",
         handler: () => {
@@ -94,12 +100,6 @@ export class RememberPage {
           } else {
             console.log('there is no notification to be canceled');
           }
-        }
-      }, {
-        text: 'Cancelar',
-        role: "cancel",
-        handler: () => {
-          console.log('cancel remember set has been canceled');
         }
       }]
     });

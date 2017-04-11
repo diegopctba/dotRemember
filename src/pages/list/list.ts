@@ -4,34 +4,56 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
 import { Notification } from '../../app/components/notification';
 
 @Component({
-  selector: 'list-home',
+  selector: 'list-notifications',
   templateUrl: 'list.html'
 })
 export class ListPage {
 
-  notifications: Notification[];
+  notifications: Array<Notification>;
+  arrayNotifs = Array<Notification>()
 
   constructor(public navCtrl: NavController, private localNotifications: LocalNotifications) {
     this.listNotifications();
   }
 
   listNotifications() {
-    //this.notifications = this.localNotifications.getAll();
     var thereis = this.localNotifications.getAll() != null;
-    this.localNotifications.getAll().then(function (notification){
-      console.log('sucess '+notification);
-      if (notification.length > 0) {
-        this.notifications = [];
-        for (var index = 0; index < notification.length; index++) {
-          var notif = notification[index];
-          this.notifications[index] = new Notification(notif.id, notif.text, notif.at.toString());
+    var arrayNotifs = new Array<Notification>();
+    console.log('instanciando nots');
+    this.localNotifications.getAll().then(function (resolveNotifs) {
+      console.log('promisse sucess ' + resolveNotifs);
+      if (resolveNotifs.length > 0) {
+        console.log('tem notificacao');
+        for (var index = 0; index < resolveNotifs.length; index++) {
+          console.log('notificacao '+index);
+          var notif = resolveNotifs[index];
+          arrayNotifs.push(new Notification(notif.id, notif.text, notif.at));
+          console.log('adicionado nots');
         }
       }
-      //this.notifications = notification;
-    }, function (notificacao) {
-      console.log('reject '+notificacao);
-    });
+      //Promise.resolve(nots);
+     // nots => this.nots = nots;
+      //nots => this.showNotification(nots);
+      arrayNotifs => this.arrayNotifs = arrayNotifs;
 
-    console.log('there is notifications? '+ thereis );
+    }, function (rejectNotifs) {
+      console.log('reject ' + rejectNotifs);
+    });
+    if (this.arrayNotifs != null) {
+      this.showNotification();
+    }
+    console.log('there is notifications? ' + thereis);
+  }
+
+
+ showNotification() {
+   console.log('showNotification');
+    if (this.arrayNotifs.length > 0) {
+      this.notifications = new Array<Notification>();
+      for (var index = 0; index < this.arrayNotifs.length; index++) {
+        this.notifications.push(this.arrayNotifs[index]);
+      }
+      console.log('notifications atualizado');
+    }
   }
 }
