@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { AlertController } from 'ionic-angular';
+import { NavController,AlertController } from 'ionic-angular';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 
 @Component({
@@ -9,29 +8,32 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
 })
 export class RememberPage {
 
-  showRangeMinutes: boolean = true;
-  showCancelButton: boolean = false;
+
   notificationId: number = 8708709870;
   countHr: number = 1;
   countMin: number = 1;
   time: string;
+  text: string;
+  showCancelButton: boolean = false;
+  showRangeMinutes: boolean = true;
+
 
   constructor(public alertCtrl: AlertController,
       public navCtrl: NavController,
      private localNotifications: LocalNotifications) {
+       this.text = window.localStorage.getItem('mensagem');
+       this.time = window.localStorage.getItem('tempo');
+       this.showRangeMinutes = (window.localStorage.getItem('minutes') == 'minutes');
+       if (this.showRangeMinutes) {
+         this.countMin = parseInt(this.time);
+       } else {
+         this.countHr = parseInt(this.time);
+       }
   }
 
-  showNotification() {
+    showNotification() {
     //    var timenow = new Date();
-    if ((this.countMin < 1 && this.countHr < 1)|| (this.time !== 'mins' && this.time !== 'hrs')) {
-      let alert  = this.alertCtrl.create({
-          title:'Lembrete',
-          subTitle:'Preencha um valor válido',
-          buttons: ['OK']
-      });
-     alert.present();
-
-    } else {
+ 
       let alert = this.alertCtrl.create({
         title: 'Lembrete',
         subTitle: 'Deseja acionar o lembrete?',
@@ -52,7 +54,7 @@ export class RememberPage {
         }]
       });
       alert.present();
-    }
+    
 
 
   }
@@ -105,12 +107,4 @@ export class RememberPage {
     });
     alert.present();
   }
-
-    minutesSelected() {
-      this.showRangeMinutes = true;
-    };
-
-    hoursSelected() {
-      this.showRangeMinutes = false;
-    };
 }

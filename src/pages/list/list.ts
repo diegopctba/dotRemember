@@ -10,7 +10,7 @@ import { Notification } from '../../app/components/notification';
 export class ListPage {
 
   notifications: Array<Notification>;
-  arrayNotifs = Array<Notification>()
+  arrayNotifs: Array<Notification>;
 
   constructor(public navCtrl: NavController, private localNotifications: LocalNotifications) {
     this.listNotifications();
@@ -18,7 +18,7 @@ export class ListPage {
 
   listNotifications() {
     var thereis = this.localNotifications.getAll() != null;
-    var arrayNotifs = new Array<Notification>();
+    let array = new Array<Notification>();
     console.log('instanciando nots');
     this.localNotifications.getAll().then(function (resolveNotifs) {
       console.log('promisse sucess ' + resolveNotifs);
@@ -27,14 +27,15 @@ export class ListPage {
         for (var index = 0; index < resolveNotifs.length; index++) {
           console.log('notificacao '+index);
           var notif = resolveNotifs[index];
-          arrayNotifs.push(new Notification(notif.id, notif.text, notif.at));
+          array.push(new Notification(notif.id, notif.text, notif.at));
           console.log('adicionado nots');
         }
+        
       }
       //Promise.resolve(nots);
      // nots => this.nots = nots;
       //nots => this.showNotification(nots);
-      arrayNotifs => this.arrayNotifs = arrayNotifs;
+      array => this.arrayNotifs = array;
 
     }, function (rejectNotifs) {
       console.log('reject ' + rejectNotifs);

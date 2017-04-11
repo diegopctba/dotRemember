@@ -11,6 +11,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { LocalNotifications } from '@ionic-native/local-notifications';
+import { SettingsPage } from '../pages/settings/settings';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
     MyApp,
     RememberPage,
     ListPage,
+    SettingsPage,
     Notification
   ],
   imports: [
@@ -29,6 +31,7 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
     MyApp,
     RememberPage,
     ListPage,
+    SettingsPage,
     Notification
   ],
   providers: [
