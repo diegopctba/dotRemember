@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { LocalNotifications } from '@ionic-native/local-notifications';
+import { Notification } from '../../app/components/notification';
 
 @Component({
   selector: 'list-home',
@@ -8,7 +9,7 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
 })
 export class ListPage {
 
-  notifications: string[];
+  notifications: Notification[];
 
   constructor(public navCtrl: NavController, private localNotifications: LocalNotifications) {
     this.listNotifications();
@@ -16,19 +17,15 @@ export class ListPage {
 
   listNotifications() {
     //this.notifications = this.localNotifications.getAll();
-    var thereis = this.notifications != null;
+    var thereis = this.localNotifications.getAll() != null;
     this.localNotifications.getAll().then(function (notification){
       console.log('sucess '+notification);
       if (notification.length > 0) {
-        //this.notifications = new String[notification.length];
+        this.notifications = [];
         for (var index = 0; index < notification.length; index++) {
-          var data = new Date(notification[index].at);
-          var str  = '#'+notification[index].id;
-          str += ' '+data.toString();
-          this.notifications[index] = str;
+          var notif = notification[index];
+          this.notifications[index] = new Notification(notif.id, notif.text, notif.at.toString());
         }
-        var dat = new Date(notification[0].at);
-        console.log(dat.getHours()+":"+dat.getMinutes());
       }
       //this.notifications = notification;
     }, function (notificacao) {

@@ -5,6 +5,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { RememberPage } from '../pages/remember/remember';
 import { ListPage } from '../pages/list/list';
+import { Notification } from './components/notification';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -16,7 +17,8 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
   declarations: [
     MyApp,
     RememberPage,
-    ListPage
+    ListPage,
+    Notification
   ],
   imports: [
     BrowserModule,
@@ -26,7 +28,8 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
   entryComponents: [
     MyApp,
     RememberPage,
-    ListPage
+    ListPage,
+    Notification
   ],
   providers: [
     StatusBar,
