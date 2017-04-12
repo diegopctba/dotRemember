@@ -79,7 +79,7 @@ export class RememberPage {
       led: '00ff00',
       at: dateAt,
       ongoing: false,
-      icon: 'assets/icon/favicon.ico',
+      icon: 'file://assets/icon/reminder48.png',
       data: { showCancelButton: false }
     });
     console.log("Lembrete agendado às "+dateAt.getHours() + ":" + dateAt.getMinutes());

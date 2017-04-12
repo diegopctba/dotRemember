@@ -24,3 +24,8 @@ $ git reset --hard origin/master
 $ ionic plugin add de.appplant.cordova.plugin.local-notification
 $ npm install @ionic-native/local-notifications --save
 ```
+
+## Icons and splash
+Save the icon.png in the folder 'resources' and execute the commands below:
+$ ionic resources android --icon
+$ ionic resources android --splash
