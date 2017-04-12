@@ -16,6 +16,7 @@ export class RememberPage {
   text: string;
   showCancelButton: boolean = false;
   showRangeMinutes: boolean = true;
+  rememberLabel: string;
 
 
   constructor(public alertCtrl: AlertController,
@@ -24,11 +25,15 @@ export class RememberPage {
        this.text = window.localStorage.getItem('mensagem');
        this.time = window.localStorage.getItem('tempo');
        this.showRangeMinutes = (window.localStorage.getItem('minutes') == 'minutes');
+       this.rememberLabel = this.time;
        if (this.showRangeMinutes) {
          this.countMin = parseInt(this.time);
+         this.rememberLabel += ' minuto(s).'
        } else {
          this.countHr = parseInt(this.time);
+         this.rememberLabel += ' hora(s).'
        }
+       this.evaluateNotification();
   }
 
     showNotification() {
@@ -69,7 +74,7 @@ export class RememberPage {
     var dateAt = new Date(new Date().getTime() + (count * 1000));
     this.localNotifications.schedule({
       id: this.notificationId,
-      text: 'Hey! Não esqueça do seu compromisso!!!',
+      text: this.text,
       //3600000 is one hour
       led: '00ff00',
       at: dateAt,
@@ -106,5 +111,10 @@ export class RememberPage {
       }]
     });
     alert.present();
+  }
+
+  private evaluateNotification() {
+    //var notif = this.localNotifications.getScheduled(this.notificationId);
+    this.showCancelButton = false;//(notif !== null);
   }
 }

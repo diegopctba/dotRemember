@@ -8,13 +8,26 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list style="text-align: center">
+  <ion-list>
+    <ion-card>
+      <ion-card-header>
+        <ion-label>
+          <ion-icon name="star" icon-left class="star"></ion-icon>
+          Seu lembrete é de {{rememberLabel}}
+        </ion-label>
 
-    <ion-item>
-      <button ion-button (click)="showNotification()" >Lembrar</button>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-label>{{text}}</ion-label>
+      </ion-card-content>
+    </ion-card>
+
+
+    <ion-item style="text-align: center">
+      <button ion-button (click)="showNotification()" [disabled]="showCancelButton" round large>Lembrar</button>
     </ion-item>
-    <ion-item *ngIf="showCancelButton">
-      <button ion-button color="danger" (click)="cancelNotification()"  outline>Cancelar</button>
+    <ion-item *ngIf="showCancelButton" style="text-align: center">
+      <button ion-button color="danger" (click)="cancelNotification()" outline round large>Cancelar</button>
     </ion-item>
   </ion-list>
 

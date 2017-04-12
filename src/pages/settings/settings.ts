@@ -28,11 +28,11 @@ export class SettingsPage {
     if (type !== null && type !== 'null') {
       if (type === 'minutes') {
         this.countMin = parseInt(this.time);
-        this.showRangeMinutes = true;
+        //this.showRangeMinutes = true;
         this.minutesSelected();
       } else {
         this.countHr = parseInt(this.time);
-        this.showRangeMinutes = false;
+        //this.showRangeMinutes = false;
         this.hoursSelected();
       }
     }

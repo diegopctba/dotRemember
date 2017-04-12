@@ -4,7 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { RememberPage } from '../pages/remember/remember';
-import { ListPage } from '../pages/list/list';
+//import { ListPage } from '../pages/list/list';
 import { Notification } from './components/notification';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -18,7 +18,7 @@ import { SettingsPage } from '../pages/settings/settings';
   declarations: [
     MyApp,
     RememberPage,
-    ListPage,
+    //ListPage,
     SettingsPage,
     Notification
   ],
@@ -30,7 +30,7 @@ import { SettingsPage } from '../pages/settings/settings';
   entryComponents: [
     MyApp,
     RememberPage,
-    ListPage,
+    //ListPage,
     SettingsPage,
     Notification
   ],
