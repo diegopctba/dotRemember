@@ -38,6 +38,7 @@ export class SettingsPage {
     }
     if (this.text === null || this.text === 'null') {
       this.text = 'Hey! Não esqueça do seu compromisso...';
+      this.updateValue();
     }
   }
 

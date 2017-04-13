@@ -3,12 +3,12 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Remember</ion-title>
+    <ion-title>Lembrete</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-list>
+  <ion-list *ngIf="time !== 'null' && time !== null">
     <ion-card>
       <ion-card-header>
         <ion-label>
@@ -29,6 +29,7 @@
     <ion-item *ngIf="showCancelButton" style="text-align: center">
       <button ion-button color="danger" (click)="cancelNotification()" outline round large>Cancelar</button>
     </ion-item>
+
   </ion-list>
 
 </ion-content>
